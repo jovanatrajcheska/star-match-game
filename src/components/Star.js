@@ -10,5 +10,5 @@ const Star = (props) => {
     </div>
   );
 };
-
+ 
 export default Star;
