@@ -4,6 +4,7 @@ import PlayNum from './PlayNum';
 import PlayAgain from './PlayAgain';
 import Utils from './Utils';
 
+
 const Game = () => {
   const [starsCount, setStarsCount] = useState(Utils.random(1, 9));
   const [availableNums, setAvailableNums] = useState(Utils.range(1, 9));
