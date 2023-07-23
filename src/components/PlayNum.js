@@ -2,7 +2,6 @@ import React from 'react';
 
 const PlayNum = (props) => {
 
-
   // number status color
   const colors = {
     available: 'lightgray',
