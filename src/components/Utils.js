@@ -1,4 +1,6 @@
 const utils = {
+
+  
   // sum in arr
   sum: (arr) => arr.reduce((acc, curr) => acc + curr, 0),
 
@@ -24,6 +26,6 @@ const utils = {
     }
     return sums[utils.random(0, sums.length - 1)];
   },
-};
+};   
 
 export default utils;
