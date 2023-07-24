@@ -1,6 +1,5 @@
-// index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import StarMatch from './components/StarMatch';
+import Game from './screens/Game';
 
-ReactDOM.render(<StarMatch />, document.getElementById('root'));
+ReactDOM.render(<Game />, document.getElementById('root'));
