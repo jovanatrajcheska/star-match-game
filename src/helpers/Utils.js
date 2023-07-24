@@ -1,6 +1,5 @@
 const utils = {
 
-  
   // sum in arr
   sum: (arr) => arr.reduce((acc, curr) => acc + curr, 0),
 
