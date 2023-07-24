@@ -85,7 +85,7 @@ const Game = () => {
             <Star range={Utils.range} count={starsCount} />
           )}
         </div>
-        <div className="right">
+        <div className="right" data-testid="available-numbers">
           {Utils.range(1, 9).map((number) => (
             <PlayNum
               key={number}
@@ -97,7 +97,7 @@ const Game = () => {
         </div>
       </div>
       <div className="timer">Time Remaining: {secondsLeft}</div>
-      <div className="used-numbers" data-testid="used-numbers" >
+      <div className="used-numbers" data-testid="used-numbers">
         {usedNumbers.map((number) => (
           <span key={number} className="numberUsed">
             {number}
