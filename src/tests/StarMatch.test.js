@@ -6,5 +6,6 @@ import StarMatch from '../components/StarMatch';
 
 test('renders without errors', () => {
   render(<StarMatch />);
-
 });
+
+
