@@ -16,6 +16,7 @@ const PlayNum = (props) => {
       className={`number ${props.status === 'used' ? 'used' : ''}`}
       style={{ backgroundColor: colors[props.status] }}
       onClick={handleClick}
+      data-testId={`number-${props.number}`}
     >
       {props.number}
     </button>
