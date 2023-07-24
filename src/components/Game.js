@@ -4,12 +4,12 @@ import PlayNum from './PlayNum';
 import PlayAgain from './PlayAgain';
 import Utils from './Utils';
 
-
 const Game = () => {
   const [starsCount, setStarsCount] = useState(Utils.random(1, 9));
   const [availableNums, setAvailableNums] = useState(Utils.range(1, 9));
   const [candidateNums, setCandidateNums] = useState([]);
   const [secondsLeft, setSecondsLeft] = useState(10);
+  const [usedNumbers, setUsedNumbers] = useState([]);
 
   // timer
   useEffect(() => {
@@ -59,6 +59,7 @@ const Game = () => {
       setStarsCount(Utils.randomSumIn(newAvailableNums, 9));
       setAvailableNums(newAvailableNums);
       setCandidateNums([]);
+      setUsedNumbers((prevUsedNumbers) => [...prevUsedNumbers, ...newCandidateNums]);
     }
   };
 
@@ -68,12 +69,13 @@ const Game = () => {
     setAvailableNums(Utils.range(1, 9));
     setCandidateNums([]);
     setSecondsLeft(10);
+    setUsedNumbers([]);
   };
 
   return (
     <div className="game">
       <div className="rule">
-        <h3>Pick 1 or more numbers that sum to the number of stars</h3>
+        <h3>Pick one or more numbers that sum to the number of showed stars</h3>
       </div>
       <div className="body">
         <div className="left">
@@ -95,6 +97,13 @@ const Game = () => {
         </div>
       </div>
       <div className="timer">Time Remaining: {secondsLeft}</div>
+      <div className="used-numbers" data-testid="used-numbers" >
+        {usedNumbers.map((number) => (
+          <span key={number} className="numberUsed">
+            {number}
+          </span>
+        ))}
+      </div>
     </div>
   );
 };
