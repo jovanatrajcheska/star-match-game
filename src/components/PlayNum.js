@@ -1,8 +1,4 @@
-import React from 'react';
-
 const PlayNum = (props) => {
-
-  // number status color
   const colors = {
     available: 'lightgray',
     used: 'lightgreen',
@@ -10,14 +6,14 @@ const PlayNum = (props) => {
     candidate: 'deepskyblue',
   };
 
-  // number click
   const handleClick = () => {
     props.onClick(props.number, props.status);
   };
 
   return (
     <button
-      className="number"
+      data-testid={`number-${props.number}`}
+      className={`number ${props.status === 'used' ? 'used' : ''}`}
       style={{ backgroundColor: colors[props.status] }}
       onClick={handleClick}
     >
