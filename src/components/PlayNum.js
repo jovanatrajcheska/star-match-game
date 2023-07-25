@@ -1,4 +1,7 @@
-const PlayNum = (props) => {
+import React from 'react';
+import Button from './Button';
+
+const PlayNum = ({ number, status, onClick }) => {
   const colors = {
     available: 'lightgray',
     used: 'lightgreen',
@@ -7,19 +10,18 @@ const PlayNum = (props) => {
   };
 
   const handleClick = () => {
-    props.onClick(props.number, props.status);
+    onClick(number, status);
   };
 
   return (
-    <button
-      data-testid={`number-${props.number}`}
-      className={`number ${props.status === 'used' ? 'used' : ''}`}
-      style={{ backgroundColor: colors[props.status] }}
+    <Button
+      data-testid={`number-${number}`}
+      className={`number ${status === 'used' ? 'used' : ''}`}
+      style={{ backgroundColor: colors[status] }}
       onClick={handleClick}
-      data-testId={`number-${props.number}`}
     >
-      {props.number}
-    </button>
+      {number}
+    </Button>
   );
 };
 
