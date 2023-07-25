@@ -1,16 +1,11 @@
 import React from 'react';
 import Button from './Button';
+import Message from './Message';
 
-const PlayAgain = ({ gameStatus, onClick: clickFunc }) => (
+const PlayAgain = ({ gameStatus, onClick }) => (
   <div className="game-done">
-    <div
-      className="message-status"
-      style={{ color: gameStatus === 'lost' ? 'red' : 'green' }}
-    >
-      {gameStatus === 'lost' ? 'Game Over' : 'Nice'}
-    </div>
-
-    <Button onClick={clickFunc}>Play Again</Button>
+    <Message gameStatus={gameStatus} />
+    <Button onClick={onClick}>Play Again</Button>
   </div>
 );
 
