@@ -1,15 +1,16 @@
 import React from 'react';
+import Button from './Button';
 
-
-const PlayAgain = (props) => (
+const PlayAgain = ({ gameStatus, onClick: clickFunc }) => (
   <div className="game-done">
     <div
       className="message-status"
-      style={{ color: props.gameStatus === 'lost' ? 'red' : 'green' }}
+      style={{ color: gameStatus === 'lost' ? 'red' : 'green' }}
     >
-      {props.gameStatus === 'lost' ? 'Game Over' : 'Nice'}
+      {gameStatus === 'lost' ? 'Game Over' : 'Nice'}
     </div>
-    <button onClick={props.onClick}>Play Again</button>
+
+    <Button onClick={clickFunc}>Play Again</Button>
   </div>
 );
 
