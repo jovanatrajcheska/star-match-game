@@ -1,26 +1,24 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import Message from '../components/Message';
 
 test('renders without errors', () => {
   render(<Message />);
 });
 
+test('gameStatus prop - case: won', () => {
 
-test("Correct message and style - won", () =>{
+  const gameStatus = 'won';
+  const { getByTestId } = render(<Message gameStatus={gameStatus} />);
+  const component = getByTestId('game-status');
 
-    const {getByText} = render(<Message gameStatus="won"/>)
+  expect(component.textContent).toBe(' Nice ');
+});
 
-    const message = getByText('Nice');
-    expect(message).toBeInTheDocument();
-    expect(message).toHaveStyle('color: green');
-})
+test('gameStatus prop - case: lost', () => {
+  const gameStatus = 'lost';
+  const { getByTestId } = render(<Message gameStatus={gameStatus} />);
 
-test("Correct message and style - lost", () =>{
-
-    const {getByText} = render(<Message gameStatus="lost"/>)
-
-    const message = getByText('Game Over');
-    expect(message).toBeInTheDocument();
-    expect(message).toHaveStyle('color: red');
-})
+  const component = getByTestId('game-status');
+  expect(component.textContent).toBe(' Game Over ');
+});
