@@ -1,12 +1,8 @@
 import React from 'react';
+import GameStatus from '../helpers/GameStatus';
 
 const Message = ({ gameStatus }) => (
-
-    <div className="message-status" style={{ color: gameStatus === 'lost' ? 'red' : 'green' }}>
-
-        {gameStatus === 'lost' ? 'Game Over' : 'Nice'}
-
-    </div>
+  <GameStatus gameStatus={gameStatus} />
 );
 
 export default Message;
