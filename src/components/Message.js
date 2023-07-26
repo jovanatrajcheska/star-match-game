@@ -1,8 +1,10 @@
 import React from 'react';
-import GameStatus from '../helpers/GameStatus';
 
-const Message = ({ gameStatus }) => (
-  <GameStatus gameStatus={gameStatus} />
+const Message = ({ text, color }) => (
+  <div className="message-status" style={{ color }}>
+    {text}
+  </div>
 );
 
 export default Message;
+
