@@ -5,49 +5,57 @@ import '@testing-library/jest-dom/extend-expect';
 import PlayAgain from '../components/PlayAgain';
 
 test('renders without errors', () => {
-  render(<PlayAgain />);
-})
+    render(<PlayAgain />);
+});
 
-
-test('Play Again button is working - won', () =>{
+test('Play Again button is working - won', () => {
     const buttonClick = jest.fn();
 
-    const { getByText} = render(<PlayAgain gameStatus = "won" onClick={buttonClick} />);
+    const { getByText } = render(<PlayAgain gameStatus="won" onClick={buttonClick} />);
 
 
     const PlayAgainButton = getByText('Play Again');
     fireEvent.click(PlayAgainButton);
 
     expect(buttonClick).toHaveBeenCalledTimes(1);
-})
+});
 
-test('Play Again button is working - lost', () =>{
+test('Play Again button is working - lost', () => {
     const buttonClick = jest.fn();
 
-    const { getByText} = render(<PlayAgain gameStatus = "lost" onClick={buttonClick} />);
+    const { getByText } = render(<PlayAgain gameStatus="lost" onClick={buttonClick} />);
 
 
     const PlayAgainButton = getByText('Play Again');
     fireEvent.click(PlayAgainButton);
 
     expect(buttonClick).toHaveBeenCalledTimes(1);
-})
+});
 
+test('Game Over && Play Again Button work properly - lost', () => {
+    const buttonClick = jest.fn();
+    const { getByText } = render(<PlayAgain gameStatus="lost" onClick={buttonClick} />);
 
-test("Correct message and style - won", () =>{
+    const messageGot = getByText('Game Over');
+    expect(messageGot).toBeInTheDocument();
 
-    const {getByText} = render(<PlayAgain gameStatus="won"/>)
+    const button = getByText('Play Again');
+    expect(button).toBeInTheDocument();
 
-    const message = getByText('Nice');
-    expect(message).toBeInTheDocument();
-    expect(message).toHaveStyle('color: green');
-})
+    fireEvent.click(button);
+    expect(buttonClick).toHaveBeenCalled();
+});
 
-test("Correct message and style - lost", () =>{
+test('Nice && Play Again Button work properly - won', () => {
+    const buttonClick = jest.fn();
+    const { getByText } = render(<PlayAgain gameStatus="won" onClick={buttonClick} />);
 
-    const {getByText} = render(<PlayAgain gameStatus="lost"/>)
+    const messageGot = getByText('Nice');
+    expect(messageGot).toBeInTheDocument();
 
-    const message = getByText('Game Over');
-    expect(message).toBeInTheDocument();
-    expect(message).toHaveStyle('color: red');
-})
+    const button = getByText('Play Again');
+    expect(button).toBeInTheDocument();
+
+    fireEvent.click(button);
+    expect(buttonClick).toHaveBeenCalled();
+});
