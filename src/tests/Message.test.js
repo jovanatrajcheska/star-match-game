@@ -6,19 +6,27 @@ test('renders without errors', () => {
   render(<Message />);
 });
 
-test('gameStatus prop - case: won', () => {
+test('Status won', () => {
+  const messageToDisplay = 'Nice';
+  const messageColor = 'green';
 
-  const gameStatus = 'won';
-  const { getByTestId } = render(<Message gameStatus={gameStatus} />);
-  const component = getByTestId('game-status');
+  const { getByText, container } = render(<Message text={messageToDisplay} color={messageColor} />);
 
-  expect(component.textContent).toBe(' Nice ');
+  const messageElement = getByText(messageToDisplay);
+  expect(messageElement).toBeInTheDocument();
+
+  expect(container.firstChild).toHaveStyle(`color: ${messageColor}`);
 });
 
-test('gameStatus prop - case: lost', () => {
-  const gameStatus = 'lost';
-  const { getByTestId } = render(<Message gameStatus={gameStatus} />);
 
-  const component = getByTestId('game-status');
-  expect(component.textContent).toBe(' Game Over ');
+test('Status lost', () => {
+  const messageToDisplay = 'Game Over';
+  const messageColor = 'red';
+
+  const { getByText, container } = render(<Message text={messageToDisplay} color={messageColor} />);
+
+  const messageElement = getByText(messageToDisplay);
+  expect(messageElement).toBeInTheDocument();
+
+  expect(container.firstChild).toHaveStyle(`color: ${messageColor}`);
 });
