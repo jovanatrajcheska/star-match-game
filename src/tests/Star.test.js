@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import utils from '../components/Utils';
+import utils from '../helpers/Utils';
 import Star from '../components/Star';
 
 test('renders without errors', () => {
