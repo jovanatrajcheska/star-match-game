@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Star from '../components/Star';
 import PlayNum from '../components/PlayNum';
 import PlayAgain from '../components/PlayAgain';
-import Utils from '../components/Utils';
+import Utils from '../helpers/Utils';
 
 
 const Game = () => {
